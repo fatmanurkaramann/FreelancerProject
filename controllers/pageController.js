@@ -1,4 +1,5 @@
 const Portfolio = require('./../models/Portfolio')
+const nodemailer = require('nodemailer');
 
 exports.getHomePage = async (req, res) => {
     const portfolios = await Portfolio.find()
@@ -22,7 +23,7 @@ exports.getEditPage = async (req,res)=>{
 exports.sendEmail = async (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
-    const phoneNumber = req.body.number
+    const phoneNumber = req.body.phoneNumber
     const message = req.body.messages;
     // Check if the email field is empty
     if (!email && !name && !message) {
