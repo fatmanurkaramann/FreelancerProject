@@ -1,6 +1,7 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const ejs = require('ejs')
+const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const pageRoute = require('./routes/pageRoute')
@@ -22,6 +23,9 @@ app.use(bodyParser.json());
 app.use(express.static('public'))
 app.use(fileUpload())
 app.use(express.json())
+app.use(methodOverride('_method', {
+    methods: ['POST', 'GET']
+}))
 app.set("view engine", "ejs");
 
 

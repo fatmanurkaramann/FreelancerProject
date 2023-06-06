@@ -1,0 +1,60 @@
+<%- include('partials/_header.ejs') -%>
+    <!-- Edit Portfolio -->
+    <section class="page-section" id="addPortfolio">
+        <div class="container" id="container01">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Edit Portfolio</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <form encType="multipart/form-data" id="contactForm" method="post"
+                    action="/<%= portfolio._id %>?_method=PUT">
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" name="title" type="text" placeholder="Title" value="<%= portfolio.title %>"/>
+                            <label for="name">Title</label>
+                        </div>
+                        <!-- Message input-->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" type="text" name="description"
+                                placeholder="Description" style="height: 10rem"
+                                data-sb-validations="required"><%= portfolio.description %></textarea>
+                            <label for="message">Description</label>
+                        </div>
+                        <div class="form-floating mb-3" id="container01">
+                            <input type="file" name="image" id="myfile" accept="image/*" onchange="loadFile(event)">
+                            <img id="output" style="margin-top: 13px;width: 60%;" src="<%= portfolio.image %>" />
+                        </div>
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">Form submission successful!</div>
+                                To activate this form, sign up at
+                                <br />
+                                <a
+                                    href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button-->
+                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Edit Portfolio</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var loadFile = function(event) {
+          var output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+          }
+        };
+      </script>
+    <%- include('partials/_footer.ejs') -%>

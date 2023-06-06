@@ -8,6 +8,8 @@ const router = express.Router()
 
 router.route('/').get(pageController.getHomePage)
 router.route('/photos').post(photoController.createPortfolio)
+router.route('/:id').get(pageController.getEditPage)
+router.route('/:id').put(photoController.editPortfolio)
 
 
 module.exports = router

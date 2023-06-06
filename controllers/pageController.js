@@ -11,3 +11,11 @@ exports.getHomePage = async (req, res) => {
         }
     )
 }
+exports.getEditPage = async (req,res)=>{
+    const portfolio = await Portfolio.findById(req.params.id)
+
+    res.render(
+        'edit',
+        {portfolio},
+    )
+}
