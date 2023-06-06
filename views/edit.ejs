@@ -1,7 +1,7 @@
 <%- include('partials/_header.ejs') -%>
     <!-- Edit Portfolio -->
     <section class="page-section" id="addPortfolio">
-        <div class="container" id="container01">
+        <div class="container">
             <!-- Contact Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Edit Portfolio</h2>
             <!-- Icon Divider-->
@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-floating mb-3" id="container01">
                             <input type="file" name="image" id="myfile" accept="image/*" onchange="loadFile(event)">
-                            <img id="output" style="margin-top: 13px;width: 60%;" src="<%= portfolio.image %>" />
+                            <img id="output" src="<%= portfolio.image %>" />
                         </div>
                         <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
@@ -40,9 +40,12 @@
                                     href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                             </div>
                         </div>
-
+                        <a href="/" class="homeBtn">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>Back Home
+                        </a>
                         <!-- Submit Button-->
                         <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Edit Portfolio</button>
+                     
                     </form>
                 </div>
             </div>
