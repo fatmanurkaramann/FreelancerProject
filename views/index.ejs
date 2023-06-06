@@ -213,7 +213,8 @@
                             <label for="message">Description</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="file" name="image" id="myfile">
+                            <input type="file" name="image" id="myfile" accept="image/*" onchange="loadFile(event)">
+                            <img id="output" />
                         </div>
                         <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
@@ -232,4 +233,13 @@
             </div>
         </div>
     </section>
+    <script>
+        var loadFile = function(event) {
+          var output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+          }
+        };
+      </script>
     <%- include('partials/_footer.ejs') -%>
